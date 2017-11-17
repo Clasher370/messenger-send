@@ -6,6 +6,6 @@ class Destination < ApplicationRecord
 
   def deliver
     sleep 3
-    puts "deliver message #{ self.message.body } to #{ self.messenger } for #{ self.nickname }"
+    puts "deliver message #{message.body} to #{messenger} for #{nickname}"
   end
 end
