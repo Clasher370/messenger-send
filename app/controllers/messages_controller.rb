@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     if message.save
+      message.destinations.each(&:deliver)
       render json: {}, status: :ok
     else
       render json: message.errors.messages, status: :unprocessable_entity
