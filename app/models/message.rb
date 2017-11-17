@@ -2,5 +2,5 @@ class Message < ApplicationRecord
   has_many :destinations
   accepts_nested_attributes_for :destinations
 
-  validates_presence_of :body
+  validates_presence_of :body, :destinations
 end
