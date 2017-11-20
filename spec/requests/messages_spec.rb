@@ -8,7 +8,9 @@ describe 'Messages' do
 
   describe 'request with' do
     context 'valid params' do
-      let(:request) { post '/message', params: params }
+      let(:request) { post '/message',
+                           params: params,
+                           headers: authenticated_header }
 
       it 'return success status' do
         request
@@ -27,7 +29,9 @@ describe 'Messages' do
         params_with_2_des = params.dup
         params_with_2_des['destinations_attributes'] << { 'messenger' => 'viber',
                                                           'nickname' => 'nick' }
-        expect { post '/message', params: params_with_2_des }
+        expect { post '/message',
+                      params: params_with_2_des,
+                      headers: authenticated_header }
             .to change { Destination.count }.by 2
       end
     end
@@ -36,26 +40,36 @@ describe 'Messages' do
       after { expect(response).to have_http_status 422 }
 
       it 'body' do
-        post '/message', params: params.except('body')
+        post '/message',
+             params: params.except('body'),
+             headers: authenticated_header
       end
 
       it 'destinations_attributes' do
-        post '/message', params: params.except('destinations_attributes')
+        post '/message',
+             params: params.except('destinations_attributes'),
+             headers: authenticated_header
       end
 
       it 'messenger' do
         params['destinations_attributes'][0].except!('messenger')
-        post '/message', params: params
+        post '/message',
+             params: params,
+             headers: authenticated_header
       end
 
       it 'nickname' do
         params['destinations_attributes'][0].except!('nickname')
-        post '/message', params: params
+        post '/message',
+             params: params,
+             headers: authenticated_header
       end
 
       it 'invalid messenger' do
         params['destinations_attributes'][0]['messenger'] = 'skype'
-        post '/message', params: params
+        post '/message',
+             params: params,
+             headers: authenticated_header
       end
     end
   end
