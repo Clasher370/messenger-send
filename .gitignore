@@ -17,5 +17,7 @@
 .ruby-version
 .ruby-gemset
 config/database.yml
-config/secrets.yml
 .idea
+.env
+# Ignore encrypted secrets key file.
+config/secrets.yml.key

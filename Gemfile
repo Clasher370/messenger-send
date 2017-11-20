@@ -17,15 +17,24 @@ gem 'puma', '~> 3.7'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+gem 'dotenv'
 gem 'delayed_job_active_record'
 gem 'validates_timeliness', '~> 4.0'
 gem 'knock'
 gem 'sidekiq'
+
+
+group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
