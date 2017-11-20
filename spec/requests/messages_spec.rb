@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Messages' do
   let(:params) { { 'body' => 'Some text',
+                   'deliver_in' => Time.now.to_s,
                    'destinations_attributes' => [{ 'messenger' => 'telegram',
                                                    'nickname' => 'jack' }]} }
 

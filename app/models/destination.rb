@@ -4,8 +4,9 @@ class Destination < ApplicationRecord
   validates_presence_of :messenger, :nickname
   validates_inclusion_of :messenger, in: %w( telegram viber whatsapp )
 
+  # imitation of message send
   def deliver
     sleep 3
-    puts "deliver message #{message.body} to #{messenger} for #{nickname}"
+    %w(yes no).sample
   end
 end
