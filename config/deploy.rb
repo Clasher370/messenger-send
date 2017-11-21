@@ -33,7 +33,7 @@ set :bundle_binstubs, nil
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-set :linked_files, %w{config/database.yml .env}
+set :linked_files, %w{.env}
 set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :puma do
