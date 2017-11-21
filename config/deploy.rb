@@ -22,6 +22,7 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 set :sidekiq_config => 'config/sidekiq.yml'
+set :bundle_binstubs, nil
 
 
 ## Defaults:
@@ -33,7 +34,7 @@ set :sidekiq_config => 'config/sidekiq.yml'
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml .env}
-set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
