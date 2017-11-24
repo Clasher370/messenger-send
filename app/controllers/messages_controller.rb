@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   def create
     message = Message.create!(uniq_params)
     MessagePrepareJob.perform_later(message)
-    render json: {}, status: :ok
+    json_response
   end
 
   private

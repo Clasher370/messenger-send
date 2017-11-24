@@ -4,6 +4,12 @@ class ApplicationController < ActionController::API
   before_action :authenticate_user
 
   rescue_from ActiveRecord::RecordInvalid do |e|
-    render json: e.message, status: :unprocessable_entity
+    json_response(e.message, :unprocessable_entity)
+  end
+
+  private
+
+  def json_response(object = {}, status = :ok)
+    render json: object, status: status
   end
 end
