@@ -47,6 +47,13 @@ describe 'Messages' do
         request
         expect(response).to have_http_status 200
       end
+      context 'Uniq message' do
+        let!(:message) { Message.create(params) }
+
+        it 'is not create dest' do
+          expect { request }.to change { Destination.count }.by 0
+        end
+      end
     end
 
     context 'invalid params' do
