@@ -16,7 +16,7 @@ describe 'Messages' do
 
   describe 'request with' do
     context 'valid params' do
-      it 'return success status create' do
+      it 'return success status' do
         request
         expect(response).to have_http_status 200
       end
@@ -40,6 +40,12 @@ describe 'Messages' do
           params['destinations_attributes'][0]
 
         expect { request }.to change { Destination.count }.by 1
+      end
+
+      it 'without deliver_id' do
+        params.except!('deliver_in')
+        request
+        expect(response).to have_http_status 200
       end
     end
 

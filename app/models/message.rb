@@ -6,7 +6,7 @@ class Message < ApplicationRecord
 
   before_create :set_deliver_in
 
-  validates_datetime :deliver_in
+  validates_datetime :deliver_in, allow_nil: true
 
   private
 
